@@ -20,6 +20,7 @@ public class MobItems {
 	public static void registerItems(RegistryEvent.Register<Item> event) {
 		createSpawnEgg(MobEntities.ICE_CUBE, 0x9eb8e8, 0xbad0f9);
 		createSpawnEgg(MobEntities.SKELETAL_KNIGHT, 0xa6a6a6, 0x808080);
+		createSpawnEgg(MobEntities.WATCHER, 0x9e9a99, 0x262625);
 		
 		ITEMS.forEach((item) -> event.getRegistry().registerAll(item));
 	}

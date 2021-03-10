@@ -14,6 +14,7 @@ import net.minecraft.util.RegistryKey;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biome.Category;
+import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.biome.MobSpawnInfo.Spawners;
 import net.minecraftforge.common.BiomeDictionary;
@@ -70,6 +71,10 @@ public class MobEvents {
 		
 		if(spawners.stream().anyMatch((s) -> s.type == EntityType.SKELETON)) {
 			spawners.add(new MobSpawnInfo.Spawners(MobEntities.SKELETAL_KNIGHT, 10, 1, 2));
+		}
+		
+		if(event.getCategory() == Category.THEEND && biome != Biomes.THE_END) {
+			spawners.add(new MobSpawnInfo.Spawners(MobEntities.WATCHER, 1, 1, 2));
 		}
 	}
 	

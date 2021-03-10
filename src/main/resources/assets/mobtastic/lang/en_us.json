@@ -3,7 +3,9 @@
 
 	"item.mobtastic.ice_cube_spawn_egg": "Ice Cube Spawn Egg",
 	"item.mobtastic.skeletal_knight_spawn_egg": "Skeletal Knight Spawn Egg",
+	"item.mobtastic.watcher_spawn_egg": "Watcher Spawn Egg",
 	
 	"entity.mobtastic.ice_cube": "Ice Cube",
-	"entity.mobtastic.skeletal_knight": "Skeletal Knight"
+	"entity.mobtastic.skeletal_knight": "Skeletal Knight",
+	"entity.mobtastic.watcher": "Watcher"
 }
