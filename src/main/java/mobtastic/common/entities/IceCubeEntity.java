@@ -78,7 +78,7 @@ public class IceCubeEntity extends SlimeEntity {
 	
 	@Override
 	protected IParticleData getSquishParticle() {
-		return ParticleTypes.ITEM_SNOWBALL;
+		return isMelting() ? ParticleTypes.SPLASH : ParticleTypes.ITEM_SNOWBALL;
 	}
 	
 	@Override
@@ -91,26 +91,30 @@ public class IceCubeEntity extends SlimeEntity {
 		this.squishAmount *= 0.4F;
 	}
 	
+	private boolean isMelting() {
+        int i = MathHelper.floor(this.getPosX());
+        int j = MathHelper.floor(this.getPosY());
+        int k = MathHelper.floor(this.getPosZ());
+        return this.world.getBiome(new BlockPos(i, 0, k)).getTemperature(new BlockPos(i, j, k)) > 1.0F;
+	}
+	
 	@Override
 	public void livingTick() {
 		super.livingTick();
 		if (!this.world.isRemote) {
 			//temperature damage
-	         int i = MathHelper.floor(this.getPosX());
-	         int j = MathHelper.floor(this.getPosY());
-	         int k = MathHelper.floor(this.getPosZ());
-	         if (this.world.getBiome(new BlockPos(i, 0, k)).getTemperature(new BlockPos(i, j, k)) > 1.0F && world.getGameTime() % 20 == 0) {
+	         if (this.isMelting() && world.getGameTime() % 20 == 0) {
 	            this.attackEntityFrom(DamageSource.ON_FIRE, 1.0F);
 	            
 	            if (!net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.world, this)) {
 	                return;
 	             }
-
+	            
 	            BlockState blockstate = Blocks.WATER.getDefaultState().with(FlowingFluidBlock.LEVEL, 7);
 	             for(int l = 0; l < 4; ++l) {
-	                i = MathHelper.floor(this.getPosX() + (double)((float)(l % 2 * 2 - 1) * 0.25F));
-	                j = MathHelper.floor(this.getPosY());
-	                k = MathHelper.floor(this.getPosZ() + (double)((float)(l / 2 % 2 * 2 - 1) * 0.25F));
+	                int i = MathHelper.floor(this.getPosX() + (double)((float)(l % 2 * 2 - 1) * 0.25F));
+	                int j = MathHelper.floor(this.getPosY());
+	                int k = MathHelper.floor(this.getPosZ() + (double)((float)(l / 2 % 2 * 2 - 1) * 0.25F));
 	                BlockPos blockpos = new BlockPos(i, j, k);
 	                if (this.world.isAirBlock(blockpos) && this.world.getBlockState(blockpos.down()).isSolid() && blockstate.isValidPosition(this.world, blockpos)) {
 	                   this.world.setBlockState(blockpos, blockstate);

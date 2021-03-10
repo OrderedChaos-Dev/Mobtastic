@@ -19,7 +19,9 @@ public class MobItems {
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event) {
 		createSpawnEgg(MobEntities.ICE_CUBE, 0x9eb8e8, 0xbad0f9);
-		event.getRegistry().registerAll(ITEMS.toArray(new Item[0]));
+		createSpawnEgg(MobEntities.SKELETAL_KNIGHT, 0xa6a6a6, 0x808080);
+		
+		ITEMS.forEach((item) -> event.getRegistry().registerAll(item));
 	}
 	
 	public static Item registerItem(Item item, String name) {

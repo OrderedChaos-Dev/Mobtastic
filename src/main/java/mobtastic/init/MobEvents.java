@@ -13,8 +13,9 @@ import net.minecraft.entity.monster.MagmaCubeEntity;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.biome.Biome.Category;
+import net.minecraft.world.biome.MobSpawnInfo;
+import net.minecraft.world.biome.MobSpawnInfo.Spawners;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
@@ -61,8 +62,14 @@ public class MobEvents {
 		RegistryKey<Biome> biome = RegistryKey.getOrCreateKey(ForgeRegistries.Keys.BIOMES, event.getName());
 		Set<BiomeDictionary.Type> biomeTypes = BiomeDictionary.getTypes(biome);
 		
+		List<Spawners> spawners = event.getSpawns().getSpawner(EntityClassification.MONSTER);
+		
 		if(event.getCategory() == Category.ICY || hasType(biomeTypes, Type.SNOWY)) {
-			event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(MobEntities.ICE_CUBE, 20, 1, 1));
+			spawners.add(new MobSpawnInfo.Spawners(MobEntities.ICE_CUBE, 20, 1, 1));
+		}
+		
+		if(spawners.stream().anyMatch((s) -> s.type == EntityType.SKELETON)) {
+			spawners.add(new MobSpawnInfo.Spawners(MobEntities.SKELETAL_KNIGHT, 10, 1, 2));
 		}
 	}
 	
