@@ -119,6 +119,10 @@ public class MobEvents {
 			spawners.add(new MobSpawnInfo.Spawners(MobEntities.SKELETAL_KNIGHT, 10, 1, 2));
 		}
 		
+		if(spawners.stream().anyMatch((s) -> s.type == EntityType.ZOMBIE)) {
+			spawners.add(new MobSpawnInfo.Spawners(MobEntities.GHOST, 10, 1, 1));
+		}
+		
 		if(event.getCategory() == Category.THEEND && biome != Biomes.THE_END) {
 			spawners.add(new MobSpawnInfo.Spawners(MobEntities.WATCHER, 1, 1, 2));
 		}

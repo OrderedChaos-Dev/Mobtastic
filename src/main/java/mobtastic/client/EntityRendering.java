@@ -1,5 +1,6 @@
 package mobtastic.client;
 
+import mobtastic.client.renderers.GhostRenderer;
 import mobtastic.client.renderers.IceCubeRenderer;
 import mobtastic.client.renderers.MawRenderer;
 import mobtastic.client.renderers.WatcherRenderer;
@@ -17,5 +18,6 @@ public class EntityRendering {
 		RenderingRegistry.registerEntityRenderingHandler(MobEntities.SKELETAL_KNIGHT, SkeletonRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(MobEntities.WATCHER, WatcherRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(MobEntities.MAW, MawRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(MobEntities.GHOST, GhostRenderer::new);
 	}
 }

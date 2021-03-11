@@ -3,6 +3,7 @@ package mobtastic.init;
 import java.util.ArrayList;
 import java.util.List;
 
+import mobtastic.common.entities.GhostEntity;
 import mobtastic.common.entities.IceCubeEntity;
 import mobtastic.common.entities.MawEntity;
 import mobtastic.common.entities.SkeletalKnightEntity;
@@ -29,6 +30,7 @@ public class MobEntities {
 	public static final EntityType<SkeletalKnightEntity> SKELETAL_KNIGHT = registerEntity(EntityType.Builder.create(SkeletalKnightEntity::new, EntityClassification.MONSTER).size(0.6F, 1.99F), "skeletal_knight");
 	public static final EntityType<WatcherEntity> WATCHER = registerEntity(EntityType.Builder.create(WatcherEntity::new, EntityClassification.MONSTER).size(1.0F, 1.0F), "watcher");
 	public static final EntityType<MawEntity> MAW = registerEntity(EntityType.Builder.create(MawEntity::new, EntityClassification.MONSTER).size(1.0F, 4.5F).immuneToFire(), "maw");
+	public static final EntityType<GhostEntity> GHOST = registerEntity(EntityType.Builder.create(GhostEntity::new, EntityClassification.MONSTER).size(0.6F, 1.95F), "ghost");
 	
 	public static <T extends Entity> EntityType<T> registerEntity(EntityType.Builder<?> builder, String name) {
 		EntityType<T> entity = (EntityType<T>) builder.build(name).setRegistryName(new ResourceLocation(Mobtastic.MOD_ID, name));
@@ -49,6 +51,7 @@ public class MobEntities {
 		event.put(SKELETAL_KNIGHT, AbstractSkeletonEntity.registerAttributes().create());
 		event.put(WATCHER, WatcherEntity.setAttributes().create());
 		event.put(MAW, MawEntity.setAttributes().create());
+		event.put(GHOST, GhostEntity.setAttributes().create());
 	}
 	
 	public static void registerSpawnPlacements() {

@@ -2,7 +2,6 @@ package mobtastic.init;
 
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 
 public class MobItemGroup extends ItemGroup {
 	
@@ -13,6 +12,6 @@ public class MobItemGroup extends ItemGroup {
 
 	@Override
 	public ItemStack createIcon() {
-		return new ItemStack(Items.APPLE);
+		return new ItemStack(MobItems.maw_tongue);
 	}
 }

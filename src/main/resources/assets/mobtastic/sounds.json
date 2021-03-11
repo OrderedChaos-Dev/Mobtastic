@@ -1,0 +1,21 @@
+{
+  "entity.ghost.ambient": {
+    "sounds": [
+      "mobtastic:entity/ghost/idle1"
+    ],
+    "subtitle": "subtitles.mobtastic_ghost.ambient"
+  },
+  "entity.ghost.hurt": {
+    "sounds": [
+      "mobtastic:entity/ghost/hurt1"
+    ],
+    "subtitle": "subtitles.mobtastic_ghost.hurt"
+  },
+  "entity.ghost.death": {
+    "sounds": [
+      "mobtastic:entity/ghost/death1",
+      "mobtastic:entity/ghost/death2"
+    ],
+    "subtitle": "subtitles.mobtastic_ghost.death"
+  }
+}

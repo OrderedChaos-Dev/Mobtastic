@@ -8,9 +8,15 @@
 	"item.mobtastic.skeletal_knight_spawn_egg": "Skeletal Knight Spawn Egg",
 	"item.mobtastic.watcher_spawn_egg": "Watcher Spawn Egg",
 	"item.mobtastic.maw_spawn_egg": "Maw Spawn Egg",
+	"item.mobtastic.ghost_spawn_egg": "Ghost Spawn Egg",
 	
 	"entity.mobtastic.ice_cube": "Ice Cube",
 	"entity.mobtastic.skeletal_knight": "Skeletal Knight",
 	"entity.mobtastic.watcher": "Watcher",
-	"entity.mobtastic.maw": "Maw"
+	"entity.mobtastic.maw": "Maw",
+	"entity.mobtastic.ghost": "Ghost",
+	
+	"subtitles.mobtastic_ghost.ambient": "Ghost murmurs",
+	"subtitles.mobtastic_ghost.hurt": "Ghost hurts",
+	"subtitles.mobtastic_ghost.death": "Ghost dies"
 }

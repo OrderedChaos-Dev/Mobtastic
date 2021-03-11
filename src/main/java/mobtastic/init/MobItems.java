@@ -40,6 +40,7 @@ public class MobItems {
 		createSpawnEgg(MobEntities.SKELETAL_KNIGHT, 0xa6a6a6, 0x808080);
 		createSpawnEgg(MobEntities.WATCHER, 0x9e9a99, 0x262625);
 		createSpawnEgg(MobEntities.MAW, 0x909090, 0xFF0000);
+		createSpawnEgg(MobEntities.GHOST, 0x959595, 0xffffff);
 		
 		ITEMS.forEach((item) -> event.getRegistry().registerAll(item));
 	}
