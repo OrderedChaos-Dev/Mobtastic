@@ -1,11 +1,16 @@
 {
 	"itemGroup.mobtastic": "Mobtastic",
 
+	"item.mobtastic.maw_tongue": "Maw Tongue",
+	"item.mobtastic.maw_tongue.description": "It squirms as you hold it.",
+
 	"item.mobtastic.ice_cube_spawn_egg": "Ice Cube Spawn Egg",
 	"item.mobtastic.skeletal_knight_spawn_egg": "Skeletal Knight Spawn Egg",
 	"item.mobtastic.watcher_spawn_egg": "Watcher Spawn Egg",
+	"item.mobtastic.maw_spawn_egg": "Maw Spawn Egg",
 	
 	"entity.mobtastic.ice_cube": "Ice Cube",
 	"entity.mobtastic.skeletal_knight": "Skeletal Knight",
-	"entity.mobtastic.watcher": "Watcher"
+	"entity.mobtastic.watcher": "Watcher",
+	"entity.mobtastic.maw": "Maw"
 }
