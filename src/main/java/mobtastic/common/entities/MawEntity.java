@@ -8,9 +8,11 @@ import mobtastic.init.MobItems;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntitySize;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ILivingEntityData;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.Pose;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -32,7 +34,6 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.potion.Potions;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Direction;
@@ -97,13 +98,13 @@ public class MawEntity extends MonsterEntity {
 		compound.putBoolean("Friendly", this.dataManager.get(FRIENDLY));
 	}
 	
-//	@Override
-//	protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {
-//		if(this.getAttachmentFace() == Direction.DOWN)
-//			return 0.1F;
-//		else
-//			return this.getHeight() - 0.1F;
-//	}
+	@Override
+	protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {
+		if(this.getAttachmentFace() == Direction.DOWN)
+			return 0.5F;
+		else
+			return this.getHeight() - 0.5F;
+	}
 
 	@Nullable
 	@Override

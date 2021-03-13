@@ -7,6 +7,7 @@ import java.util.Set;
 import mobtastic.common.entities.IceCubeEntity;
 import mobtastic.common.entities.MawEntity;
 import mobtastic.core.Mobtastic;
+import mobtastic.core.MobtasticConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
@@ -111,23 +112,23 @@ public class MobEvents {
 		
 		List<Spawners> spawners = event.getSpawns().getSpawner(EntityClassification.MONSTER);
 		
-		if(event.getCategory() == Category.ICY || hasType(biomeTypes, Type.SNOWY)) {
+		if(MobtasticConfig.iceCube.get() && event.getCategory() == Category.ICY || hasType(biomeTypes, Type.SNOWY)) {
 			spawners.add(new MobSpawnInfo.Spawners(MobEntities.ICE_CUBE, 20, 1, 1));
 		}
 		
-		if(spawners.stream().anyMatch((s) -> s.type == EntityType.SKELETON)) {
+		if(MobtasticConfig.skeletalKnight.get() && spawners.stream().anyMatch((s) -> s.type == EntityType.SKELETON)) {
 			spawners.add(new MobSpawnInfo.Spawners(MobEntities.SKELETAL_KNIGHT, 10, 1, 2));
 		}
 		
-		if(spawners.stream().anyMatch((s) -> s.type == EntityType.ZOMBIE)) {
+		if(MobtasticConfig.ghost.get() && spawners.stream().anyMatch((s) -> s.type == EntityType.ZOMBIE)) {
 			spawners.add(new MobSpawnInfo.Spawners(MobEntities.GHOST, 10, 1, 1));
 		}
 		
-		if(event.getCategory() == Category.THEEND && biome != Biomes.THE_END) {
+		if(MobtasticConfig.watcher.get() && event.getCategory() == Category.THEEND && biome != Biomes.THE_END) {
 			spawners.add(new MobSpawnInfo.Spawners(MobEntities.WATCHER, 1, 1, 2));
 		}
 		
-		if(biome == Biomes.NETHER_WASTES) {
+		if(MobtasticConfig.maw.get() && biome == Biomes.NETHER_WASTES) {
 			spawners.add(new MobSpawnInfo.Spawners(MobEntities.MAW, 1, 1, 1));
 		}
 	}
