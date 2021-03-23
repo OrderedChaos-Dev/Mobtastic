@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import mobtastic.client.EntityRendering;
+import mobtastic.init.MobEntities;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -36,7 +37,9 @@ public class Mobtastic
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
-
+    	event.enqueueWork(() -> {
+    		MobEntities.registerDungeonEntities();
+    	});
     }
 
     private void processIMC(final InterModProcessEvent event) {

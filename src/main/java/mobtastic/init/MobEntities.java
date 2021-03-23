@@ -9,6 +9,7 @@ import mobtastic.common.entities.MawEntity;
 import mobtastic.common.entities.SkeletalKnightEntity;
 import mobtastic.common.entities.WatcherEntity;
 import mobtastic.core.Mobtastic;
+import mobtastic.core.MobtasticConfig;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
@@ -42,7 +43,6 @@ public class MobEntities {
 	@SubscribeEvent
 	public static void registerEntities(RegistryEvent.Register<EntityType<?>> event) {
 		ENTITIES.forEach((e) -> event.getRegistry().register(e));
-		registerDungeonEntities();
 	}
 
 	@SubscribeEvent
@@ -59,6 +59,8 @@ public class MobEntities {
 	}
 	
 	public static void registerDungeonEntities() {
-		DungeonHooks.addDungeonMob(SKELETAL_KNIGHT, 50);
+		
+		if(MobtasticConfig.skeletalKnight.get())
+			DungeonHooks.addDungeonMob(SKELETAL_KNIGHT, 50);
 	}
 }
