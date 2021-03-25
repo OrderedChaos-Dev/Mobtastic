@@ -70,12 +70,16 @@ public class GhostEntity extends MonsterEntity {
 		int light = this.getEntityWorld().getLight(this.getPosition());
 		if(light > 9) {
 			vanishTime++;
+			this.dataManager.set(VANISHING, vanishTime);
 		} else {
-			if(vanishTime > 0)
+			if(getVanishTime() > 0) {
 				vanishTime--;
+				this.dataManager.set(VANISHING, vanishTime);
+			}
 		}
+		this.dataManager.set(VANISHING, vanishTime);
 		
-		if(vanishTime > 400) {
+		if(getVanishTime() > 400) {
 			for(int i = 0; i < 20; i++) {
 				this.world.addParticle(ParticleTypes.SMOKE, this.getPosXRandom(0.5D), this.getPosYRandom(), this.getPosZRandom(0.5D), 0.0D, 0.0D, 0.0D);
 			}
@@ -83,8 +87,8 @@ public class GhostEntity extends MonsterEntity {
 		}
 		
 		if(this.world.isRemote && light > 9) {
-			if(vanishTime > 0) {
-				if(this.rand.nextFloat() < vanishTime / 400.0F) {
+			if(getVanishTime() > 0) {
+				if(this.rand.nextFloat() < getVanishTime() / 400.0F) {
 					this.world.addParticle(ParticleTypes.SMOKE, this.getPosXRandom(0.5D), this.getPosYRandom(), this.getPosZRandom(0.5D), 0.0D, 0.0D, 0.0D);
 				}
 			}
@@ -135,10 +139,11 @@ public class GhostEntity extends MonsterEntity {
 	}
 	
 	public int getVanishTime() {
-		return vanishTime;
+		return this.dataManager.get(VANISHING);
 	}
 	
 	public void setVanishTime(int i) {
+		this.dataManager.set(VANISHING, i);
 		vanishTime = i;
 	}
 	

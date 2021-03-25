@@ -16,6 +16,7 @@ import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntitySpawnPlacementRegistry.PlacementType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.monster.AbstractSkeletonEntity;
+import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.Heightmap.Type;
 import net.minecraftforge.common.DungeonHooks;
@@ -43,6 +44,7 @@ public class MobEntities {
 	@SubscribeEvent
 	public static void registerEntities(RegistryEvent.Register<EntityType<?>> event) {
 		ENTITIES.forEach((e) -> event.getRegistry().register(e));
+		registerSpawnPlacements();
 	}
 
 	@SubscribeEvent
@@ -55,7 +57,9 @@ public class MobEntities {
 	}
 	
 	public static void registerSpawnPlacements() {
-		EntitySpawnPlacementRegistry.register(MAW, PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, MawEntity::canSpawn);
+		EntitySpawnPlacementRegistry.register(SKELETAL_KNIGHT, PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::canMonsterSpawnInLight);
+		EntitySpawnPlacementRegistry.register(GHOST, PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::canMonsterSpawnInLight);
+		EntitySpawnPlacementRegistry.register(ICE_CUBE, PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, IceCubeEntity::canSpawn);
 	}
 	
 	public static void registerDungeonEntities() {
